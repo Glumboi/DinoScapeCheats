@@ -3,7 +3,7 @@
 
 # Includes
   - Very high coin rewards
-  - Super seed
+  - Super speed
   - Give eggs
   - Give dino's
  
