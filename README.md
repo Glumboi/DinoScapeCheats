@@ -1,5 +1,5 @@
 # DinoScapeCheats
- Example for a simple cheat for Dinoscape using Harmony and MelonLoader that I made to learn more about game hacking and unity hame modding
+ Example for a simple cheat for Dinoscape using Harmony and MelonLoader that I made to learn more about game hacking and unity game modding
 
 # Includes
   - Fill all egg slots with one button click
