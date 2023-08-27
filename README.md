@@ -3,7 +3,7 @@
 
 # Includes
   - Fill all egg slots with one button click
-  - Give all except for one dino with one click
+  - Give all dinos except for one dino with one click
   - Patch all the goal meters of the eggs to 1
   - Change emerald collectable rewards
   - Change username (unstable)
