@@ -10,5 +10,6 @@
   - Speedhack with custom multiplier options
   - Grant a specified number of Amber/Emeralds on every egg hatch
   - Stop zone movement
+  - Bypass account ban screen (unstable)
  
 # FOR EDUCATION ONLY
