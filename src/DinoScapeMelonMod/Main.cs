@@ -55,6 +55,20 @@ namespace DinoScapeMelonMod
         }
     }
 
+        
+    [HarmonyPatch(typeof(GetDisplayname))]
+    internal static class GetDisplaynamePatches
+    {
+        public static GetDisplayname displayNameInstance;
+        
+        [HarmonyPatch(typeof(GetDisplayname), "Start")]
+        [HarmonyPrefix]
+        static void Prefix_Start(GetDisplayname __instance)
+        {
+            displayNameInstance = __instance;
+        }
+    }
+    
     //works sometimes
     [HarmonyPatch(typeof(CheckForBan))]
     internal static class BanPatches
@@ -106,7 +120,6 @@ namespace DinoScapeMelonMod
     internal static class PlayerMovementPatches
     {
         public static bool boost = false;
-        public static float baseRunSpeed;
         
         [HarmonyPatch(typeof(PlayerMovement), "Update")]
         [HarmonyPrefix]
@@ -114,7 +127,7 @@ namespace DinoScapeMelonMod
         {
             if (boost)
             {
-                __instance.runSpeed += 1f;
+                __instance.runSpeed = __instance.runSpeedBase * 2;
             }
             else
             {

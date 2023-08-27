@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Il2Cpp;
 using MelonLoader;
 using UnityEngine;
 using MelonLoader;
@@ -33,11 +35,24 @@ namespace DinoScapeMelonMod
                 GameInstances.cM.GiveDinoTrizera();
                 
                 MelonLogger.Msg("Gave all available dino's from the CheatManager!");
+            }            
+            
+            if (GUILayout.Button("Change username", new GUILayoutOption[0]))
+            {
+                string newUserName;
+                if (!File.Exists("./NewUserName.txt"))
+                    File.Create("./NewUserName.txt").Close();
+
+                newUserName = File.ReadAllText("./NewUserName.txt");
+                if (!string.IsNullOrWhiteSpace(newUserName))
+                {
+                    GetDisplaynamePatches.displayNameInstance.SaveName(newUserName);
+                }
             }
             
             GUILayout.Space(8);
             
-            if (GUILayout.Button("Toggle super speed (can cheese the leaderboards)", new GUILayoutOption[0]))
+            if (GUILayout.Button("Toggle speed boost", new GUILayoutOption[0]))
             {
                 PlayerMovementPatches.boost = !PlayerMovementPatches.boost;
             }
