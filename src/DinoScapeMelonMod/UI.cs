@@ -1,24 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Il2Cpp;
+using DinoScapeMelonMod.Patches;
 using MelonLoader;
 using UnityEngine;
-using MelonLoader;
 
 namespace DinoScapeMelonMod
 {
-    internal class UI
+    internal static class UI
     {
-        public static void DoMyWindow()
+        public static void MenuUI()
         {
-            GUILayout.BeginVertical(GUI.skin.window, new GUILayoutOption[] { GUILayout.Width(300)});
+            GUILayout.BeginVertical(GUI.skin.window, GUILayout.Width(300));
             GUI.backgroundColor = new Color32(255, 0, 147, 255);
             GUI.contentColor = new Color32(0, 198, 255, 255);
-            
+
             GUILayout.BeginHorizontal();
             if (GUILayout.Button("Close", new GUILayoutOption[0]))
             {
@@ -33,7 +27,7 @@ namespace DinoScapeMelonMod
 
             if (GUILayout.Button("Fill all slots with eggs", new GUILayoutOption[0]))
             {
-                for (int i = 0; i < 6; i++)
+                for (uint i = 0; i < 6; i++)
                 {
                     GameInstances.cM.GiveDinoEgg();
 
@@ -74,17 +68,13 @@ namespace DinoScapeMelonMod
             GUILayout.EndHorizontal();
             EmeraldPatches.patchRewards = GUILayout.Toggle(EmeraldPatches.patchRewards, "Toggle patched rewards");
 
-
             GUILayout.Space(8);
             GUILayout.Label("New username");
-            GetDisplaynamePatches.newUsername = GUILayout.TextField(GetDisplaynamePatches.newUsername);
-            if (GUILayout.Button("Change username", new GUILayoutOption[0]))
+            GameInstances.newUsername = GUILayout.TextField(GameInstances.newUsername);
+            if (GUILayout.Button("Change username", new GUILayoutOption[0]) && !string.IsNullOrWhiteSpace(GameInstances.newUsername))
             {
-                if (!string.IsNullOrWhiteSpace(GetDisplaynamePatches.newUsername))
-                {
-                    GetDisplaynamePatches.displayNameInstance.SaveName(GetDisplaynamePatches.newUsername);
-                    MelonLogger.Msg($"Trying to change username to: {GetDisplaynamePatches.newUsername}");
-                }
+                GameInstances.cDN.SaveName(GameInstances.newUsername);
+                MelonLogger.Msg($"Trying to change username to: {GameInstances.newUsername}");
             }
 
             GUILayout.Space(8);
@@ -99,11 +89,30 @@ namespace DinoScapeMelonMod
             DinoEggPatches.cheatAmber = GUILayout.Toggle(DinoEggPatches.cheatAmber, "Toggle Amber/Emrald hatch cheat");
 
             GUILayout.Space(8);
+            GUILayout.Label("Weapon to equip");
+            Menupatches.WeaponMenuPatches.selectWeaponName =
+                GUILayout.TextField(Menupatches.WeaponMenuPatches.selectWeaponName);
+
+            if (GUILayout.Button("Equip", new GUILayoutOption[0]) && Menupatches.WeaponMenuPatches.instance != null)
+            {
+                Menupatches.WeaponMenuPatches.EquipItemByName(Menupatches.WeaponMenuPatches.selectWeaponName);
+            }
+
+            GUILayout.Space(8);
+            GUILayout.Label("Hat to equip");
+            Menupatches.HatMenuPatches.selectHatName =
+                GUILayout.TextField(Menupatches.HatMenuPatches.selectHatName);
+
+            if (GUILayout.Button("Equip", new GUILayoutOption[0]) && Menupatches.HatMenuPatches.instance != null)
+            {
+                Menupatches.HatMenuPatches.EquipItemByName(Menupatches.HatMenuPatches.selectHatName);
+            }
+
+            GUILayout.Space(8);
             GUILayout.Label("Other settings");
             GUILayout.Space(4);
             ZonePatches.zoneDontMove =
                 GUILayout.Toggle(ZonePatches.zoneDontMove, "Stop zone movement (needs a level reload)");
-
             GUILayout.EndVertical();
         }
     }

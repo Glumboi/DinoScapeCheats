@@ -13,6 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
+    <LangVersion>9</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>false</DebugSymbols>
@@ -34,8 +35,17 @@
     <Reference Include="Assembly-CSharp">
       <HintPath>..\Lib\Assembly-CSharp.dll</HintPath>
     </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>..\Lib\Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppInterop.Runtime">
+      <HintPath>..\Lib\Il2CppInterop.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="Il2Cppmscorlib">
       <HintPath>..\Lib\Il2Cppmscorlib.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppPlayFab">
+      <HintPath>..\Lib\Il2CppPlayFab.dll</HintPath>
     </Reference>
     <Reference Include="MelonLoader">
       <HintPath>..\Lib\MelonLoader.dll</HintPath>
@@ -55,15 +65,44 @@
     <Reference Include="UnityEngine.Physics2DModule">
       <HintPath>..\Lib\UnityEngine.Physics2DModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\UnityEngine.UI.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameInstances.cs" />
+    <Compile Include="Patches\AntiCheatPatches.cs" />
+    <Compile Include="Patches\BanPatches.cs" />
+    <Compile Include="Patches\DinoEggPatches.cs" />
+    <Compile Include="Patches\EmeraldPatches.cs" />
+    <Compile Include="Patches\IncubatorManagerPatches.cs" />
+    <Compile Include="Patches\PlayerMovementPatches.cs" />
+    <Compile Include="Patches\PlayFabEventsPatches.cs" />
+    <Compile Include="Patches\PlayfabStoredDataPatches.cs" />
+    <Compile Include="Patches\Menupatches.cs" />
+    <Compile Include="Patches\ZonePatches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="UI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Lib\0Harmony.dll" />
+    <Content Include="Lib\Assembly-CSharp-firstpass.dll" />
+    <Content Include="Lib\Assembly-CSharp.dll" />
+    <Content Include="Lib\Il2CppInterop.Runtime.dll" />
+    <Content Include="Lib\Il2Cppmscorlib.dll" />
+    <Content Include="Lib\Il2CppPlayFab.dll" />
+    <Content Include="Lib\MelonLoader.dll" />
+    <Content Include="Lib\UnityEngine.CoreModule.dll" />
+    <Content Include="Lib\UnityEngine.dll" />
+    <Content Include="Lib\UnityEngine.IMGUIModule.dll" />
+    <Content Include="Lib\UnityEngine.InputLegacyModule.dll" />
+    <Content Include="Lib\UnityEngine.Physics2DModule.dll" />
+    <Content Include="Lib\UnityEngine.UI.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
