@@ -38,6 +38,7 @@ namespace DinoScapeMelonMod.Patches
         private static void Prefix_CheckBan(CheckForBan __instance)
         {
             __instance.banned = false;
+            return;
         }
     }
 }
