@@ -37,9 +37,6 @@ namespace DinoScapeMelonMod.Patches
         [HarmonyPrefix]
         private static void Prefix_CheckBan(CheckForBan __instance)
         {
-            MelonLogger.Msg(
-                $"[From CheckBan method of CheckForBan] User banned original : {__instance.banned} User banned new: {false}");
-
             __instance.banned = false;
         }
     }
