@@ -11,5 +11,6 @@
   - Grant a specified number of Amber/Emeralds on every egg hatch
   - Stop zone movement
   - Bypass account ban screen (unstable)
+  - Equip locked gear
  
 # FOR EDUCATION ONLY
