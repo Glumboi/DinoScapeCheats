@@ -81,6 +81,7 @@
     <Compile Include="Patches\PlayFabEventsPatches.cs" />
     <Compile Include="Patches\PlayfabStoredDataPatches.cs" />
     <Compile Include="Patches\Menupatches.cs" />
+    <Compile Include="Patches\RoomNameGeneratorPatches.cs" />
     <Compile Include="Patches\ZonePatches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Main.cs" />

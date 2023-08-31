@@ -20,9 +20,12 @@ namespace DinoScapeMelonMod
     public class DinoScapeMelonMod : MelonMod
     {
         private static bool menuEnabled;
+        public static int fpsLimit = -1;
 
         public override void OnUpdate() // Runs once per frame.
         {
+            Application.targetFrameRate = fpsLimit;
+
             if (Input.GetKeyDown(KeyCode.F2))
             {
                 ToggleMenu();

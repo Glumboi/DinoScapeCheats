@@ -113,6 +113,12 @@ namespace DinoScapeMelonMod
             GUILayout.Space(4);
             ZonePatches.zoneDontMove =
                 GUILayout.Toggle(ZonePatches.zoneDontMove, "Stop zone movement (needs a level reload)");
+            GUILayout.Space(4);
+
+            GUILayout.Label("Fps limit");
+            GUILayout.Space(4);
+            DinoScapeMelonMod.fpsLimit = Int32.Parse(GUILayout.TextField(DinoScapeMelonMod.fpsLimit.ToString()));
+
             GUILayout.EndVertical();
         }
     }
